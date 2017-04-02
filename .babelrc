@@ -1,0 +1,17 @@
+{
+  "presets": [
+    ["env", {
+      "targets": {
+        "node": "current"
+      }
+    }]
+  ],
+  "plugins": [
+    ["transform-regenerator", {
+      "asyncGenerators": true,
+      "generators": false,
+      "async": true
+    }],
+    "transform-async-generator-functions"
+  ]
+}
