@@ -9,6 +9,7 @@ import {createReadStream} from 'fs';
  */
 function onceForAll(el, ...events) {
   return new Promise((resolve, reject) => {
+    events = new Set(events);
     let handlers = {};
     const handler = (eventName) => function(e) { 
       resolve([eventName, e]);
@@ -17,9 +18,6 @@ function onceForAll(el, ...events) {
       }
     };
     for(let event of events) {
-      if(handlers[event]) {
-          continue;
-      }
       handlers[event] = handler(event);
       el.on(event, handlers[event]);
     }
