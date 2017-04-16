@@ -43,14 +43,12 @@ async function* readFile(fileName) {
                 switch(event) {
                     case 'data':
                         return data.toString('utf8');
-                        break;
                     case 'error':
+                        done = true
                         return Promise.reject(data);
-                        break;
                     case 'end':
                         done = true
                         return "";
-                        break;
                 }
             });
     }
